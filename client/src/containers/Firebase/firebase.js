@@ -13,15 +13,27 @@ import "firebase/firestore";
 //   measurementId: process.env.REACT_APP_MEASURMENT_ID
 // };
 
+// const firebaseConfig = {
+//   apiKey: "AIzaSyAtmA2awEIqETz1iWIOS_Q43CKxUJ2PuFA",
+//   authDomain: "multi-charities-995e0.firebaseapp.com",
+//   databaseURL: "https://multi-charities-995e0.firebaseio.com",
+//   projectId: "multi-charities-995e0",
+//   storageBucket: "multi-charities-995e0.appspot.com",
+//   messagingSenderId: "623309833957",
+//   appId: "1:623309833957:web:2786c4a8239f090689360c",
+//   measurementId: "G-VQVMZRPGR5"
+  
+// };
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAtmA2awEIqETz1iWIOS_Q43CKxUJ2PuFA",
-  authDomain: "multi-charities-995e0.firebaseapp.com",
-  databaseURL: "https://multi-charities-995e0.firebaseio.com",
-  projectId: "multi-charities-995e0",
-  storageBucket: "multi-charities-995e0.appspot.com",
-  messagingSenderId: "623309833957",
-  appId: "1:623309833957:web:2786c4a8239f090689360c",
-  measurementId: "G-VQVMZRPGR5"
+  apiKey: "AIzaSyDvw3zdZh6Mj1O4SaipWtuFSFIF8kR3K0Y",
+  authDomain: "charitybutton-b642d.firebaseapp.com",
+  databaseURL: "https://charitybutton-b642d.firebaseio.com",
+  projectId: "charitybutton-b642d",
+  storageBucket: "charitybutton-b642d.appspot.com",
+  messagingSenderId: "485611349817",
+  appId: "1:485611349817:web:175aa1020086afcfe4aae8",
+  measurementId: "G-X25D0DFBP6"
 };
 
 class Firebase {

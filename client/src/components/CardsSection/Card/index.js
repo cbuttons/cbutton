@@ -6,6 +6,7 @@ import "./card.css";
 import Typography from "@material-ui/core/Typography";
 import CardMaterial from "@material-ui/core/Card";
 import Grow from "@material-ui/core/Grow";
+import htmlParse from "html-react-parser"
 
 class Card extends Component {
   state = {
@@ -38,7 +39,7 @@ class Card extends Component {
 
   render() {
     const {
-      props: { head, icon, text, id, addToBtn, allData, popup, openSnackBar },
+      props: { head, icon, text, code, id, addToBtn, allData, popup, openSnackBar },
       state: { clicked, openPopup, anchorEl }
     } = this;
 
@@ -68,6 +69,8 @@ class Card extends Component {
       await addToBtn();
     };
 
+    const ele = parse(code);
+
     return (
       <section className="card">
         <div className="card__img">
@@ -80,10 +83,14 @@ class Card extends Component {
         {!popup && (
           <span className="card__money-btn">
             <MoneyButton
-              to="<your-bitcoin-address-here>"
-              amount=".1"
-              currency="USD"
-              label="Money Button"
+              to={ele.props['data-to']}
+              amount= {ele.props['data-amount']}
+              currency= {ele.props['data-currency']}
+              label={ele.props['data-label']}
+              clientIdentifier={ele.props['data-client-identifier']}
+              buttonId={ele.props['data-button-id']}
+              buttonData={ele.props['data-button-data']}
+              type={ele.props['data-type']}
             />
           </span>
         )}
