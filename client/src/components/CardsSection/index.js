@@ -9,25 +9,20 @@ import "./cardsSection.css";
 import "./PrimeryButton/button.css";
 import PrimeryButton from "./PrimeryButton";
 import { withFirebase } from "../../containers/Firebase";
-import parse from 'html-react-parser';
 
 class CardSection extends Component {
   state = {
     searchValue: [],
     rerender: true,
     allData: [],
-    openSnackBar: false,
-    // mb:
-    // {
-
-    // }
+    openSnackBar: false
   };
 
   componentDidMount() {
     const dataArr = [];
 
     this.props.firebase.db
-      .collection("chariyData")
+      .collection("charityData")
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {
@@ -63,7 +58,7 @@ class CardSection extends Component {
   };
   render() {
     const {
-      state: { searchValue, allData, mb}
+      state: { searchValue, allData }
     } = this;
 
     return (
@@ -83,9 +78,6 @@ class CardSection extends Component {
                   )
                   .map(({ id }) => id)
               });
-              // var par = parse(ele.code)
-              // this.setState({to:par.props.data-to })
-              // console.log(par)
             }}
           />
         </section>
@@ -97,21 +89,10 @@ class CardSection extends Component {
                 head={ele.head}
                 text={ele.text}
                 id={ele.id}
-                code={ele.code}
                 key={index}
                 addToBtn={this.addToBtn}
                 allData={allData}
                 openSnackBar={this.state.openSnackBar}
-                code={ele.code}
-                mb_to={ele.mb_to}
-                mb_amount={ele.mb_amount}
-                mb_buttonData={ele.mb_buttonData}
-                mb_buttonID={ele.mb_buttonID}
-                mb_clientID={ele.mb_clientID}
-                mb_currency={ele.mb_currency}
-                mb_label={ele.mb_label}
-                mb_to={ele.mb_to}
-                mb_type={ele.mb_type}
               />
             )
         )}
