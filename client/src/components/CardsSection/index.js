@@ -93,6 +93,15 @@ class CardSection extends Component {
                 addToBtn={this.addToBtn}
                 allData={allData}
                 openSnackBar={this.state.openSnackBar}
+                mb_to={ele.mb_to}
+                mb_amount={ele.mb_amount}
+                mb_buttonData={ele.mb_buttonData}
+                mb_buttonID={ele.mb_buttonID}
+                mb_clientID={ele.mb_clientID}
+                mb_currency={ele.mb_currency}
+                mb_label={ele.mb_label}
+                mb_to={ele.mb_to}
+                mb_type={ele.mb_type}
               />
             )
         )}

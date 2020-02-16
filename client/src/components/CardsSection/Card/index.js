@@ -38,9 +38,10 @@ class Card extends Component {
 
   render() {
     const {
-      props: { head, icon, text, id, addToBtn, allData, popup, openSnackBar },
+      props: { head, icon, text, id, addToBtn, allData, popup, openSnackBar, mb_amount, mb_buttonData, mb_buttonID, mb_clientID, mb_currency, mb_label, mb_to, mb_type},
       state: { clicked, openPopup, anchorEl }
     } = this;
+    console.log(this.props);
 
     const addItem = async event => {
       await this.setState({ clicked: true });
@@ -79,11 +80,17 @@ class Card extends Component {
         </article>
         {!popup && (
           <span className="card__money-btn">
+            
             <MoneyButton
-              to="<your-bitcoin-address-here>"
-              amount=".1"
-              currency="USD"
-              label="Money Button"
+              to={mb_to}
+              amount= {mb_amount}
+              currency= {mb_currency}
+              label={mb_label}
+              clientIdentifier={mb_clientID}
+              buttonId={mb_buttonID}
+              buttonData={mb_buttonData}
+              type={mb_type}
+
             />
           </span>
         )}
@@ -151,7 +158,7 @@ class SimplePopover extends Component {
   }
   render() {
     const { allData, addToBtn } = this.props;
-    // console.log(`Render ${JSON.stringify(this.state)}`);
+    console.log(`Render ${JSON.stringify(this.state)}`);
     if (objLength() !== 0) {
       return (
         <div className="card-container__simplePopup">
@@ -170,6 +177,15 @@ class SimplePopover extends Component {
                             key={index}
                             addToBtn={addToBtn}
                             popup={true}
+                            mb_to={ele.mb_to}
+                            mb_amount={ele.mb_amount}
+                            mb_buttonData={ele.mb_buttonData}
+                            mb_buttonID={ele.mb_buttonID}
+                            mb_clientID={ele.mb_clientID}
+                            mb_currency={ele.mb_currency}
+                            mb_label={ele.mb_label}
+                            mb_to={ele.mb_to}
+                            mb_type={ele.mb_type}
                           />
                         );
                       }
