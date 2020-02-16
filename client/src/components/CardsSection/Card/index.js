@@ -6,12 +6,22 @@ import "./card.css";
 import Typography from "@material-ui/core/Typography";
 import CardMaterial from "@material-ui/core/Card";
 import Grow from "@material-ui/core/Grow";
+import parse from 'html-react-parser';
 
 class Card extends Component {
   state = {
     clicked: false,
     openPopup: false,
-    anchorEl: null
+    anchorEl: null,
+    reactEle:null,
+    to : null,
+    amount:null,
+    btnID:null,
+    btnData:null,
+    clientID:null,
+    currency:null,
+    label:null,
+    type:null
   };
 
   componentDidMount() {
@@ -38,10 +48,10 @@ class Card extends Component {
 
   render() {
     const {
-      props: { head, icon, text, id, addToBtn, allData, popup, openSnackBar, mb_amount, mb_buttonData, mb_buttonID, mb_clientID, mb_currency, mb_label, mb_to, mb_type},
-      state: { clicked, openPopup, anchorEl }
+      props: { head, code, icon, text, id, addToBtn, allData, popup, openSnackBar, mb_amount, mb_buttonData, mb_buttonID, mb_clientID, mb_currency, mb_label, mb_to, mb_type},
+      state: { clicked, openPopup, anchorEl, reactEle}
     } = this;
-    console.log(this.props);
+    // console.log(this.props);
 
     const addItem = async event => {
       await this.setState({ clicked: true });
@@ -68,6 +78,10 @@ class Card extends Component {
 
       await addToBtn();
     };
+    const ele = parse(code);
+    console.log('----------------------', ele.props)
+    // parse(this.props.code,this.setState({to:Attr.to}));
+    // console.log("code parse", reactEle);
 
     return (
       <section className="card">
@@ -82,14 +96,23 @@ class Card extends Component {
           <span className="card__money-btn">
             
             <MoneyButton
-              to={mb_to}
-              amount= {mb_amount}
-              currency= {mb_currency}
-              label={mb_label}
-              clientIdentifier={mb_clientID}
-              buttonId={mb_buttonID}
-              buttonData={mb_buttonData}
-              type={mb_type}
+              // to={mb_to}
+              // amount= {mb_amount}
+              // currency= {mb_currency}
+              // label={mb_label}
+              // clientIdentifier={mb_clientID}
+              // buttonId={mb_buttonID}
+              // buttonData={mb_buttonData}
+              // type={mb_type}
+
+              to={ele.props['data-to']}
+              amount= {ele.props['data-amount']}
+              currency= {ele.props['data-currency']}
+              label={ele.props['data-label']}
+              clientIdentifier={ele.props['data-client-identifier']}
+              buttonId={ele.props['data-button-id']}
+              buttonData={ele.props['data-button-data']}
+              type={ele.props['data-type']}
 
             />
           </span>
