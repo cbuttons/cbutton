@@ -22,7 +22,7 @@ class CardSection extends Component {
     const dataArr = [];
 
     this.props.firebase.db
-      .collection("charityData")
+      .collection("chariyData")
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {

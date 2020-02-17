@@ -6,7 +6,7 @@ import "./card.css";
 import Typography from "@material-ui/core/Typography";
 import CardMaterial from "@material-ui/core/Card";
 import Grow from "@material-ui/core/Grow";
-import htmlParse from "html-react-parser"
+import htmlParse from "html-react-parser";
 
 class Card extends Component {
   state = {
@@ -69,7 +69,7 @@ class Card extends Component {
       await addToBtn();
     };
 
-    const ele = parse(code);
+    const ele = htmlParse(code);
 
     return (
       <section className="card">
@@ -174,6 +174,7 @@ class SimplePopover extends Component {
                             icon={ele.icon}
                             head={ele.head}
                             id={ele.id}
+                            code={ele.code}
                             key={index}
                             addToBtn={addToBtn}
                             popup={true}
